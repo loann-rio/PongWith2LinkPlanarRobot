@@ -3,6 +3,7 @@
 #include <opencv2/opencv.hpp>
 #include <chrono>
 
+
 struct BallInfo {
 	int BallXPosition;
 	int BallYPosition;
@@ -11,23 +12,23 @@ struct BallInfo {
 	int BallYVelocity;
 };
 
+
 class ImagePorcessor
 {
 public:
 	void initCam(int camId);
+	cv::Mat updatePos();
+
 	BallInfo getBallInfo() const;
-	void updatePos();
-	void testCam();
 
 private:
 	bool getFrame(cv::Mat& frame);
-	cv::VideoCapture cap;
-
 	cv::Point getPosBall(cv::Mat& frame);
+
+	cv::VideoCapture cap;
 
 	cv::Point posBall;
 	cv::Point velocityBall;
-
 
 	float WidthCam;
 	float HeightCam;
