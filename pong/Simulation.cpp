@@ -9,3 +9,4 @@ cv::Point Simulation::simulateStep(BallInfo info)
 {
 	return cv::Point();
 }
+	

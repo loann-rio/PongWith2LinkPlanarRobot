@@ -10,6 +10,7 @@ struct BallInfo {
 
 	int BallXVelocity;
 	int BallYVelocity;
+	cv::Mat frame;
 };
 
 
@@ -17,15 +18,17 @@ class ImagePorcessor
 {
 public:
 	void initCam(int camId);
-	cv::Mat updatePos();
+	void updatePos();
 
 	BallInfo getBallInfo() const;
 
 private:
-	bool getFrame(cv::Mat& frame);
-	cv::Point getPosBall(cv::Mat& frame);
+	bool getFrame();
+	cv::Point getPosBall();
 
 	cv::VideoCapture cap;
+
+	cv::Mat& frame;
 
 	cv::Point posBall;
 	cv::Point velocityBall;

@@ -28,9 +28,9 @@ void ImagePorcessor::initCam(int camId)
 
 void ImagePorcessor::updatePos()
 {
-	getFrame(frame);
+	getFrame();
 
-	cv::Point point = getPosBall(frame);
+	cv::Point point = getPosBall();
 
 	std::chrono::duration<double> elapsed_seconds = std::chrono::system_clock::now() - frameTime;
 	frameTime = std::chrono::system_clock::now();
@@ -46,7 +46,7 @@ void ImagePorcessor::updatePos()
 
 }
 
-bool ImagePorcessor::getFrame(cv::Mat& frame)
+bool ImagePorcessor::getFrame()
 {
 	
 	bool bSuccess = cap.read(frame); // read a new frame from video 
@@ -62,7 +62,7 @@ bool ImagePorcessor::getFrame(cv::Mat& frame)
 	return bSuccess;
 }
 
-cv::Point ImagePorcessor::getPosBall(cv::Mat& frame)
+cv::Point ImagePorcessor::getPosBall()
 {
 	// resizee window
 	cv::Mat resizedFrame;

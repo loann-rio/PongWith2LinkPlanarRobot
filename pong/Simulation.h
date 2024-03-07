@@ -1,5 +1,8 @@
 #pragma once
 
+#include <opencv2/opencv.hpp>
+#include <array>
+
 struct BallInfo {
 	int BallXPosition;
 	int BallYPosition;
@@ -15,7 +18,10 @@ public:
 	Simulation() {};
 
 	void calibration();
+	cv::Point simulateStep(BallInfo info);
 
-	void simulateStep(BallInfo info);
+private:
+	std::array<cv::Point, 4> corners{};
+
 };
 
